@@ -1,0 +1,133 @@
+
+BEGIN
+	-- Insert Comment
+	--INSERT INTO F15F7_Comment VALUES(comment_id, comment, entry_date, rfe_id, emp_id);
+
+	INSERT INTO F15F7_Comment VALUES(100, "comment0", "06-NOV-15", 100, 100);
+	INSERT INTO F15F7_Comment VALUES(101, "comment1", "06-NOV-16", 101, 101);
+	INSERT INTO F15F7_Comment VALUES(102, "comment2", "06-NOV-16", 102, 102);
+	INSERT INTO F15F7_Comment VALUES(103, "comment3", "06-NOV-16", 103, 103);
+	INSERT INTO F15F7_Comment VALUES(104, "comment4", "06-NOV-16", 104, 104);
+
+	-- Insert Document
+	--INSERT INTO F15F7_Document VALUES(doc_id, rfe_id);
+	INSERT INTO F15F7_Document VALUES(100, 100);
+	INSERT INTO F15F7_Document VALUES(101, 101);
+	INSERT INTO F15F7_Document VALUES(102, 102);
+	INSERT INTO F15F7_Document VALUES(103, 103);
+	INSERT INTO F15F7_Document VALUES(104, 104);
+	
+	-- Insert Emp
+	--INSERT INTO F15F7_Emp VALUES(emp_id, name, email, office, phone, status, status_eff_date, lab_id, auth_id, sys_admin, lab_direc, exec_direc, chair);
+	INSERT INTO F15F7_Emp VALUES(100, "Chris", "cbd@mail.com", "000-0000", "A", "06-NOV-16", 100, 100, "N", "N", "Y", "N");
+	INSERT INTO F15F7_Emp VALUES(101, "Katherine", "kg@mail.com", "000-0001", "I", "06-NOV-16", 101, NULL, "N", "Y", "N", "N");
+	INSERT INTO F15F7_Emp VALUES(102, "Virin", "vt@mail.com", "000-0002", "A", "06-NOV-16", 101, 102, "N", "N", "Y", "N");
+	INSERT INTO F15F7_Emp VALUES(103, "Stephen", "sn@mail.com", "000-0003", "I", "06-NOV-20", 102, NULL, "Y", "N", "N", "N");
+	INSERT INTO F15F7_Emp VALUES(104, "Meghana", "mc@mail.com", "000-0004", "A", "06-NOV-16", 102, 104, "Y", "Y", "N", "N");
+	INSERT INTO F15F7_Emp VALUES(105, "Chistine", "cy@mail.com", "000-0005", "A", "06-NOV-16", 101, NULL, "N", "N", "Y", "N");
+	INSERT INTO F15F7_Emp VALUES(106, "Anjie", "al@mail.com", "000-0006", "I", "06-NOV-16", 103, 106, "N", "Y", "N", "N");
+	INSERT INTO F15F7_Emp VALUES(107, "Raymond", "rc@mail.com", "000-0007", "A", "06-NOV-01", 104, NULL, "Y", "N", "Y", "N");
+	INSERT INTO F15F7_Emp VALUES(108, "Alvin", "aqd@mail.com", "000-0008", "A", "06-NOV-16", 104, 108, "Y", "N", "N", "N");
+	INSERT INTO F15F7_Emp VALUES(109, "Michael", "mbl@mail.com", "000-0009", "I", "06-NOV-16", 103, NULL, "Y", "Y", "N", "N");
+	INSERT INTO F15F7_Emp VALUES(110, "John", "jps@mail.com", "000-0010", "A", "06-NOV-16", 103, 110, "Y", "N", "N", "N");
+	INSERT INTO F15F7_Emp VALUES(111, "Michael", "ma@mail.com", "000-0011", "I", "06-NOV-06", 102, NULL, "N", "Y", "N", "N");
+	INSERT INTO F15F7_Emp VALUES(112, "Scott", "sz@mail.com", "000-0012", "A", "06-NOV-16", 102, 112, "N", "N", "N", "Y");
+
+	INSERT INTO F15F7_Emp VALUES(113, "emp13", "13@mail.com", "000-0013", "A", "06-NOV-16", 102, NULL, "N", "N", "N", "Y");
+	INSERT INTO F15F7_Emp VALUES(114, "emp14", "14@mail.com", "000-0014", "A", "06-NOV-16", 102, 112, "N", "N", "N", "Y");
+	INSERT INTO F15F7_Emp VALUES(115, "emp15", "15@mail.com", "000-0015", "A", "06-NOV-16", 102, NULL, "N", "N", "N", "Y");
+	INSERT INTO F15F7_Emp VALUES(116, "emp16", "16@mail.com", "000-0016", "A", "06-NOV-16", 102, 112, "Y", "N", "N", "N");
+	INSERT INTO F15F7_Emp VALUES(117, "emp17", "17@mail.com", "000-0017", "A", "06-NOV-16", 102, 112, "N", "N", "N", "Y");
+	-- INSERT INTO F15F7_Emp VALUES(118, "Chris", "csun@mail.com", "000-0018", "I", "06-NOV-16", 100, 100, "N", "N", "Y", "N");
+
+	-- Insert History
+	-- INSERT INTO F15F7_Hist VALUES(hist_id, rfe_id, status_id);
+	INSERT INTO F15F7_Hist VALUES(100, 100, 100);
+	INSERT INTO F15F7_Hist VALUES(101, 100, 101);
+	INSERT INTO F15F7_Hist VALUES(102, 101, 102);
+	INSERT INTO F15F7_Hist VALUES(103, 101, 103);
+	INSERT INTO F15F7_Hist VALUES(104, 101, 104);
+	INSERT INTO F15F7_Hist VALUES(105, 102, 105);
+	INSERT INTO F15F7_Hist VALUES(106, 103, 106);
+	INSERT INTO F15F7_Hist VALUES(107, 104, 107);
+	INSERT INTO F15F7_Hist VALUES(108, 102, 108);
+	INSERT INTO F15F7_Hist VALUES(109, 103, 109);
+	INSERT INTO F15F7_Hist VALUES(110, 104, 110);
+	INSERT INTO F15F7_Hist VALUES(111, 104, 111);
+	
+	-- Insert Labs
+	--INSERT INTO F15F7_Lab VALUES(lab_id, name);
+	INSERT INTO F15F7_Lab VALUES(100, "A200");
+	INSERT INTO F15F7_Lab VALUES(101, "B290");
+	INSERT INTO F15F7_Lab VALUES(102, "A100");
+	INSERT INTO F15F7_Lab VALUES(103, "D010");
+	INSERT INTO F15F7_Lab VALUES(104, "E000");
+	
+	-- Insert RFE
+	--INSERT INTO F15F7_RFE VALUES(rfe_id, explanation, alt_protections, approval_review_data, status_id, task_id, emp_id);
+	INSERT INTO F15F7_RFE VALUES(100, "explanation0", "alt_protections0", "08-MAR-28", 110, 100);
+	INSERT INTO F15F7_RFE VALUES(101, "explanation1", "alt_protections1", "08-MAR-28", 111, 100);
+	INSERT INTO F15F7_RFE VALUES(102, "explanation2", "alt_protections2", "08-MAR-28", 107, 101);
+	INSERT INTO F15F7_RFE VALUES(103, "explanation3", "alt_protections3", "08-MAR-28", 108, 101);
+	INSERT INTO F15F7_RFE VALUES(104, "explanation4", "alt_protections4", "08-MAR-28", 109, 102);
+	
+	-- Insert Status
+	-- INSERT INTO F15F7_Status VALUES(status_id, status_code, effective_date);
+	INSERT INTO F15F7_Status VALUES(100, "E", "08-JUN-15");
+	INSERT INTO F15F7_Status VALUES(101, "E", "08-JUN-15");
+	INSERT INTO F15F7_Status VALUES(102, "E", "08-JUN-15");
+	INSERT INTO F15F7_Status VALUES(103, "E", "08-JUN-15");
+	INSERT INTO F15F7_Status VALUES(104, "E", "08-JUN-15");
+	INSERT INTO F15F7_Status VALUES(105, "E", "08-DEC-15");
+	INSERT INTO F15F7_Status VALUES(106, "E", "08-DEC-15");
+	INSERT INTO F15F7_Status VALUES(107, "E", "08-DEC-15");
+	INSERT INTO F15F7_Status VALUES(108, "E", "08-DEC-15");
+	INSERT INTO F15F7_Status VALUES(109, "E", "08-DEC-15");
+	INSERT INTO F15F7_Status VALUES(110, "E", "08-DEC-30");
+	INSERT INTO F15F7_Status VALUES(111, "E", "08-DEC-30");
+	
+	-- Insert Task
+	--INSERT INTO F15F7_Task VALUES(task_id, effective_date, abbrev, description);
+	INSERT INTO F15F7_Task VALUES(100, "08-JAN-17", "abbrev0", "description0");
+	INSERT INTO F15F7_Task VALUES(101, "08-JAN-17", "abbrev0", "description0");
+	INSERT INTO F15F7_Task VALUES(102, "08-JAN-17", "abbrev0", "description0");
+	
+	-- Insert Auth
+	--INSERT INTO F15F7_Auth VALUES(auth_id, right);
+	INSERT INTO F15F7_Auth VALUES(100, "read");
+	INSERT INTO F15F7_Auth VALUES(102, "read");
+	INSERT INTO F15F7_Auth VALUES(104, "read");
+	INSERT INTO F15F7_Auth VALUES(106, "write");
+	INSERT INTO F15F7_Auth VALUES(108, "write");
+	INSERT INTO F15F7_Auth VALUES(110, "read");
+	INSERT INTO F15F7_Auth VALUES(112, "write");	
+	INSERT INTO F15F7_Auth VALUES(114, "write");
+	INSERT INTO F15F7_Auth VALUES(116, "read");
+	INSERT INTO F15F7_Auth VALUES(117, "read");
+
+	-- Insert Contact
+	INSERT INTO F15F7_Contact VALUES(contact_id, rfe_id, emp_id);
+	INSERT INTO F15F7_Contact VALUES(100, 100, 100);
+	INSERT INTO F15F7_Contact VALUES(102, 101, 102);
+	INSERT INTO F15F7_Contact VALUES(104, 101, 104);
+	INSERT INTO F15F7_Contact VALUES(105, 102, 105);
+	INSERT INTO F15F7_Contact VALUES(107, 102, 107);
+	INSERT INTO F15F7_Contact VALUES(108, 103, 108);
+	INSERT INTO F15F7_Contact VALUES(110, 103, 110);
+	INSERT INTO F15F7_Contact VALUES(112, 104, 112);
+
+	-- Insert Approver
+	INSERT INTO F15F7_Approver VALUES(100, 100, 100);
+	INSERT INTO F15F7_Approver VALUES(101, 100, 101);
+	INSERT INTO F15F7_Approver VALUES(102, 101, 102);
+	INSERT INTO F15F7_Approver VALUES(103, 101, 103);
+	INSERT INTO F15F7_Approver VALUES(104, 102, 104);
+	INSERT INTO F15F7_Approver VALUES(105, 103, 105);
+	INSERT INTO F15F7_Approver VALUES(106, 103, 106);
+	INSERT INTO F15F7_Approver VALUES(107, 104, 107);
+	INSERT INTO F15F7_Approver VALUES(108, 104, 108);
+	INSERT INTO F15F7_Approver VALUES(109, 102, 109);
+	INSERT INTO F15F7_Approver VALUES(110, 103, 110);
+
+END;
+/
