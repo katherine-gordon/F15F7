@@ -1,0 +1,158 @@
+# Change the followin oracle account id and password to your oracle account id and password. Also, change A0 to your group's number but don't use F15 because it will make some internal names be too long.
+conn = connectTo 'jdbc:oracle:thin:@sayonara.microlab.cs.utexas.edu:1521:orcl' 'C##cs347_kt6958' 'orcl_kt6958' 'rdf_mode' 'F7';
+
+
+Neo4j on conn "CREATE (:era { ERA_ID : 2, ERA_NAME : 'Baroque', BEGINNING : '1600', ENDING : '1760'})"
+Neo4j on conn "CREATE (:era { ERA_ID : 3, ERA_NAME : 'Classical', BEGINNING : '1730', ENDING : '1820'})"
+Neo4j on conn "CREATE (:era { ERA_ID : 4, ERA_NAME : 'Romantic', BEGINNING : '1815', ENDING : '1910'})"
+Neo4j on conn "CREATE (:era { ERA_ID : 5, ERA_NAME : 'Modern', BEGINNING : '1890', ENDING : '1975'})"
+
+
+Neo4j on conn "CREATE (:comp { COMP_ID : 8, NAME : 'Johann Sebastian Bach', BIRTH : '1685', DEATH : '1750', ERA_ID : 2})"
+Neo4j on conn "CREATE (:comp { COMP_ID : 9, NAME : 'George Frideric Handel', BIRTH : '1685', DEATH : '1759', ERA_ID : 2})"
+Neo4j on conn "CREATE (:comp { COMP_ID : 10, NAME : 'Alessandro Scarlatti', BIRTH : '1660', DEATH : '1725', ERA_ID : 2})"
+Neo4j on conn "CREATE (:comp { COMP_ID : 11, NAME : 'Henry Purcell', BIRTH : '1659', DEATH : '1695', ERA_ID : 2})"
+
+Neo4j on conn "CREATE (:comp { COMP_ID : 12, NAME : 'Luigi Boccherini', BIRTH : '1743', DEATH : '1805', ERA_ID : 3})"
+Neo4j on conn "CREATE (:comp { COMP_ID : 13, NAME : 'Ludwig van Beethoven', BIRTH : '1770', DEATH : '1827', ERA_ID : 3})"
+Neo4j on conn "CREATE (:comp { COMP_ID : 14, NAME : 'Franz Schubert', BIRTH : '1797', DEATH : '1828', ERA_ID : 3})"
+Neo4j on conn "CREATE (:comp { COMP_ID : 15, NAME : 'Antonio Vivaldi', BIRTH : '1678', DEATH : '1741', ERA_ID : 3})"
+
+Neo4j on conn "CREATE (:comp { COMP_ID : 16, NAME : 'Frederic Chopin', BIRTH : '1810', DEATH : '1849', ERA_ID : 4})"
+Neo4j on conn "CREATE (:comp { COMP_ID : 17, NAME : 'Franz Liszt', BIRTH : '1811', DEATH : '1886', ERA_ID : 4})"
+Neo4j on conn "CREATE (:comp { COMP_ID : 18, NAME : 'Alexander Borodin', BIRTH : '1833', DEATH : '1887', ERA_ID : 4})"
+Neo4j on conn "CREATE (:comp { COMP_ID : 19, NAME : 'Gustav Mahler', BIRTH : '', DEATH : '', ERA_ID : '4'})"
+
+Neo4j on conn "CREATE (:comp { COMP_ID : 20, NAME : 'Dmitri Shostakovich', BIRTH : '1906', DEATH : '1975', ERA_ID : 5})"
+Neo4j on conn "CREATE (:comp { COMP_ID : 21, NAME : 'Bela Bartok', BIRTH : '1881', DEATH : '1945', ERA_ID : 5})"
+Neo4j on conn "CREATE (:comp { COMP_ID : 22, NAME : 'Sergei Prokofiev', BIRTH : '1891', DEATH : '1953', ERA_ID : 5})"
+Neo4j on conn "CREATE (:comp { COMP_ID : 23, NAME : 'Karlheinz Stockhausen', BIRTH : '1928', DEATH : '2007', ERA_ID : 5})"
+
+
+
+Neo4j on conn "CREATE (:piece { PIECE_ID : 24, TITLE : 'Brandenburg Concerto #3 In G', YEAR : '1718', COMP_ID : 8, ERA_ID : 2, COMP : 'Johann Sebastian Bach' , ERA_NAME : 'Baroque'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 25, TITLE : 'St.Matthew Passion', YEAR : '1727', COMP_ID : 8, ERA_ID : 2, COMP : 'Johann Sebastian Bach' , ERA_NAME : 'Baroque'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 26, TITLE : 'Musikalisches Opfer', YEAR : '1747', COMP_ID : 8, ERA_ID : 2, COMP : 'Johann Sebastian Bach' , ERA_NAME : 'Baroque'})"
+
+Neo4j on conn "CREATE (:piece { PIECE_ID : 27, TITLE : 'Messiah', YEAR : '1741', COMP_ID : 9, ERA_ID : 2 , COMP : 'George Frideric Handel', ERA_NAME : 'Baroque'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 28, TITLE : 'Passacaglia in G-Minor', YEAR : '1720', COMP_ID : 9, ERA_ID : 2, COMP : 'George Frideric Handel', ERA_NAME : 'Baroque' })"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 29, TITLE : 'Orlando', YEAR : '1733', COMP_ID : 9, ERA_ID : 2, COMP : 'George Frideric Handel', ERA_NAME : 'Baroque'})"
+
+Neo4j on conn "CREATE (:piece { PIECE_ID : 30, TITLE : 'La Eraclea', YEAR : '1700', COMP_ID : 10, ERA_ID : 2, COMP : 'Alessandro Scarlatti', ERA_NAME : 'Baroque' })"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 31, TITLE : 'La principessa fedele', YEAR : '1710', COMP_ID : 10, ERA_ID : 2, COMP : 'Alessandro Scarlatti' , ERA_NAME : 'Baroque'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 32, TITLE : 'Tigrane', YEAR : '1714', COMP_ID : 10, ERA_ID : 2, COMP : 'Alessandro Scarlatti' , ERA_NAME : 'Baroque'})"
+
+Neo4j on conn "CREATE (:piece { PIECE_ID : 33, TITLE : 'Orpheus Britannicus', YEAR : '1702', COMP_ID : 11, ERA_ID : 2, COMP : 'Henry Purcell' , ERA_NAME : 'Baroque'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 34, TITLE : 'Dido and Aeneas', YEAR : '1688', COMP_ID : 11, ERA_ID : 2, COMP : 'Henry Purcell' , ERA_NAME : 'Baroque'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 35, TITLE : 'King Arthur', YEAR : '1691', COMP_ID : 11, ERA_ID : 2, COMP : 'Henry Purcell' , ERA_NAME : 'Baroque'})"
+
+Neo4j on conn "CREATE (:piece { PIECE_ID : 36, TITLE : '6 String Quintets, G.289-294', YEAR : '1775', COMP_ID : 12, ERA_ID : 3, COMP : 'Luigi Boccherini' , ERA_NAME : 'Classical'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 37, TITLE : 'Symphony in D minor', YEAR : '1787', COMP_ID : 12, ERA_ID : 3, COMP : 'Luigi Boccherini', ERA_NAME : 'Classical' })"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 38, TITLE : '6 Sextets for Flute and Strings', YEAR : '1773', COMP_ID : 12, ERA_ID : 3, COMP : 'Luigi Boccherini' , ERA_NAME : 'Classical'})"
+
+Neo4j on conn "CREATE (:piece { PIECE_ID : 39, TITLE : 'Fur Elise', YEAR : '1810', COMP_ID : 13, ERA_ID : 3 , COMP : 'Ludwig van Beethoven', ERA_NAME : 'Classical'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 40, TITLE : 'Moonlight Sonata', YEAR : '1801', COMP_ID : 13, ERA_ID : 3 , COMP : 'Ludwig van Beethoven', ERA_NAME : 'Classical'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 41, TITLE : 'Opferlied I', YEAR : '1795', COMP_ID : 13, ERA_ID : 3 , COMP : 'Ludwig van Beethoven', ERA_NAME : 'Classical'})"
+
+Neo4j on conn "CREATE (:piece { PIECE_ID : 42, TITLE : 'Die drei Sanger', YEAR : '1815', COMP_ID : 14, ERA_ID : 3, COMP : 'Franz Schubert', ERA_NAME : 'Classical' })"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 43, TITLE : 'An die untergehende Sonne', YEAR : '1817', COMP_ID : 14, ERA_ID : 3, COMP : 'Franz Schubert', ERA_NAME : 'Classical' })"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 44, TITLE : 'Ellens Gesang', YEAR : '1825', COMP_ID : 14, ERA_ID : 3 , COMP : 'Franz Schubert', ERA_NAME : 'Classical'})"
+
+Neo4j on conn "CREATE (:piece { PIECE_ID : 45, TITLE : 'Bassoon Concerto in A minor', YEAR : '1724', COMP_ID : 15, ERA_ID : 3, COMP : 'Antonio Vivaldi' , ERA_NAME : 'Classical'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 46, TITLE : 'Cello Sonata in F major', YEAR : '1740', COMP_ID : 15, ERA_ID : 3, COMP : 'Antonio Vivaldi' , ERA_NAME : 'Classical'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 47, TITLE : 'Le quattro stagioni', YEAR : '1725', COMP_ID : 15, ERA_ID : 3, COMP : 'Antonio Vivaldi' , ERA_NAME : 'Classical'})"
+
+Neo4j on conn "CREATE (:piece { PIECE_ID : 48, TITLE : 'Black Keys Etude', YEAR : '1830', COMP_ID : 16, ERA_ID : 4, COMP : 'Frederic Chopin' , ERA_NAME : 'Romantic'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 49, TITLE : 'Waltz in C# minor', YEAR : '1847', COMP_ID : 16, ERA_ID : 4 , COMP : 'Frederic Chopin', ERA_NAME : 'Romantic'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 40, TITLE : 'Nocturne in E minor', YEAR : '1827', COMP_ID : 16, ERA_ID : 4, COMP : 'Frederic Chopin' , ERA_NAME : 'Romantic'})"
+
+Neo4j on conn "CREATE (:piece { PIECE_ID : 41, TITLE : 'Benediction et serment', YEAR : '1853', COMP_ID : 17, ERA_ID : 4, COMP : 'Franz Liszt' , ERA_NAME : 'Romantic'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 42, TITLE : 'Grandes etudes de Paganini', YEAR : '1851', COMP_ID : 17, ERA_ID : 4, COMP : 'Franz Liszt' , ERA_NAME : 'Romantic'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 43, TITLE : 'Hungarian Rhapsody No.1', YEAR : '1846', COMP_ID : 17, ERA_ID : 4 , COMP : 'Franz Liszt', ERA_NAME : 'Romantic'})"
+
+Neo4j on conn "CREATE (:piece { PIECE_ID : 44, TITLE : 'Prince Igor', YEAR : '1887', COMP_ID : 18, ERA_ID : 4 , COMP : 'Alexander Borodin', ERA_NAME : 'Romantic'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 45, TITLE : 'Symphony No.1', YEAR : '1867', COMP_ID : 18, ERA_ID : 4 , COMP : 'Alexander Borodin', ERA_NAME : 'Romantic'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 46, TITLE : 'Helene-Polka', YEAR : '1843', COMP_ID : 18, ERA_ID : 4, COMP : 'Alexander Borodin' , ERA_NAME : 'Romantic'})"
+
+Neo4j on conn "CREATE (:piece { PIECE_ID : 47, TITLE : 'Kindertotenlieder', YEAR : '1904', COMP_ID : 19, ERA_ID : 4, COMP : 'Gustav Mahler' , ERA_NAME : 'Romantic'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 48, TITLE : 'Ruckert Lieder', YEAR : '1902', COMP_ID : 19, ERA_ID : 4, COMP : 'Gustav Mahler' , ERA_NAME : 'Romantic'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 49, TITLE : 'Symphony No.5', YEAR : '1911', COMP_ID : 19, ERA_ID : 4 , COMP : 'Gustav Mahler', ERA_NAME : 'Romantic'})"
+
+Neo4j on conn "CREATE (:piece { PIECE_ID : 50, TITLE : 'Symphony No. 14', YEAR : '1969', COMP_ID : 20, ERA_ID : 5, COMP : 'Dmitri Shostakovich' , ERA_NAME : 'Modern'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 51, TITLE : 'Symphony No.11 in G minor', YEAR : '1957', COMP_ID : 20, ERA_ID : 5, COMP : 'Dmitri Shostakovich' , ERA_NAME : 'Modern'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 52, TITLE : 'String Quartet No.8', YEAR : '1960', COMP_ID : 20, ERA_ID : 5, COMP : 'Dmitri Shostakovich', ERA_NAME : 'Modern' })"
+
+Neo4j on conn "CREATE (:piece { PIECE_ID : 53, TITLE : 'Divertimento', YEAR : '1939', COMP_ID : 21, ERA_ID : 5 , COMP : 'Bela Bartok', ERA_NAME : 'Modern'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 54, TITLE : 'String Quartet No.1', YEAR : '1909', COMP_ID : 21, ERA_ID : 5 , COMP : 'Bela Bartok', ERA_NAME : 'Modern'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 55, TITLE : 'Marche Funebre', YEAR : '1903', COMP_ID : 21, ERA_ID : 5 , COMP : 'Bela Bartok', ERA_NAME : 'Modern'})"
+
+Neo4j on conn "CREATE (:piece { PIECE_ID : 56, TITLE : 'Romeo and Juliet', YEAR : '1936', COMP_ID : 22, ERA_ID : 5, COMP : 'Sergei Prokofiev', ERA_NAME : 'Modern' })"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 57, TITLE : 'Violin Concerto No.1', YEAR : '1917', COMP_ID : 22, ERA_ID : 5, COMP : 'Sergei Prokofiev' , ERA_NAME : 'Modern'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 58, TITLE : 'Sonata for Solo Violin', YEAR : '1947', COMP_ID : 22, ERA_ID : 5, COMP : 'Sergei Prokofiev' , ERA_NAME : 'Modern'})"
+
+Neo4j on conn "CREATE (:piece { PIECE_ID : 59, TITLE : 'Kontakte', YEAR : '1960', COMP_ID : 23, ERA_ID : 5, COMP : 'Bela Bartok' , ERA_NAME : 'Modern'})"
+Neo4j on conn "CREATE (:piece { PIECE_ID : 60, TITLE : 'Samstag aus Licht', YEAR : '1983', COMP_ID : 23, ERA_ID : 5, COMP : 'Bela Bartok', ERA_NAME : 'Modern' })"
+
+
+
+
+
+Neo4j on conn "MATCH (a:era),(b:comp) WHERE a.ERA_ID = 2 AND b.ERA_ID = 2 CREATE (a)-[:Era_of]->(b)"
+Neo4j on conn "MATCH (a:era),(b:comp) WHERE a.ERA_ID = 3 AND b.ERA_ID = 3 CREATE (a)-[:Era_of]->(b)"
+Neo4j on conn "MATCH (a:era),(b:comp) WHERE a.ERA_ID = 4 AND b.ERA_ID = 4 CREATE (a)-[:Era_of]->(b)"
+Neo4j on conn "MATCH (a:era),(b:comp) WHERE a.ERA_ID = 5 AND b.ERA_ID = 5 CREATE (a)-[:Era_of]->(b)"
+
+
+Neo4j on conn "MATCH (a:era),(b:comp) WHERE a.ERA_ID = 2 AND b.ERA_ID = 2 CREATE (a)<-[:comp_from]-(b)"
+Neo4j on conn "MATCH (a:era),(b:comp) WHERE a.ERA_ID = 3 AND b.ERA_ID = 3 CREATE (a)<-[:comp_from]-(b)"
+Neo4j on conn "MATCH (a:era),(b:comp) WHERE a.ERA_ID = 4 AND b.ERA_ID = 4 CREATE (a)<-[:comp_from]-(b)"
+Neo4j on conn "MATCH (a:era),(b:comp) WHERE a.ERA_ID = 5 AND b.ERA_ID = 5 CREATE (a)<-[:comp_from]-(b)"
+
+
+
+Neo4j on conn "MATCH (a:era),(b:piece) WHERE a.ERA_ID = 2 AND b.ERA_ID = 2 CREATE (a)-[:written_in]->(b)"
+Neo4j on conn "MATCH (a:era),(b:piece) WHERE a.ERA_ID = 3 AND b.ERA_ID = 3 CREATE (a)-[:written_in]->(b)"
+Neo4j on conn "MATCH (a:era),(b:piece) WHERE a.ERA_ID = 4 AND b.ERA_ID = 4 CREATE (a)-[:written_in]->(b)"
+Neo4j on conn "MATCH (a:era),(b:piece) WHERE a.ERA_ID = 5 AND b.ERA_ID = 5 CREATE (a)-[:written_in]->(b)"
+
+
+Neo4j on conn "MATCH (a:era),(b:comp) WHERE a.ERA_ID = 2 AND b.ERA_ID = 2 CREATE (a)<-[:during]-(b)"
+Neo4j on conn "MATCH (a:era),(b:comp) WHERE a.ERA_ID = 3 AND b.ERA_ID = 3 CREATE (a)<-[:during]-(b)"
+Neo4j on conn "MATCH (a:era),(b:comp) WHERE a.ERA_ID = 4 AND b.ERA_ID = 4 CREATE (a)<-[:during]-(b)"
+Neo4j on conn "MATCH (a:era),(b:comp) WHERE a.ERA_ID = 5 AND b.ERA_ID = 5 CREATE (a)<-[:during]-(b)"
+
+
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 8 AND b.COMP_ID = 8 CREATE (a)-[:wrote]->(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 9 AND b.COMP_ID = 9 CREATE (a)-[:wrote]->(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 10 AND b.COMP_ID = 10 CREATE (a)-[:wrote]->(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 11 AND b.COMP_ID = 11 CREATE (a)-[:wrote]->(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 12 AND b.COMP_ID = 12 CREATE (a)-[:wrote]->(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 13 AND b.COMP_ID = 13 CREATE (a)-[:wrote]->(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 14 AND b.COMP_ID = 14 CREATE (a)-[:wrote]->(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 15 AND b.COMP_ID = 15 CREATE (a)-[:wrote]->(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 16 AND b.COMP_ID = 16 CREATE (a)-[:wrote]->(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 17 AND b.COMP_ID = 17 CREATE (a)-[:wrote]->(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 18 AND b.COMP_ID = 18 CREATE (a)-[:wrote]->(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 19 AND b.COMP_ID = 19 CREATE (a)-[:wrote]->(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 20 AND b.COMP_ID = 20 CREATE (a)-[:wrote]->(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 21 AND b.COMP_ID = 21 CREATE (a)-[:wrote]->(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 22 AND b.COMP_ID = 22 CREATE (a)-[:wrote]->(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 23 AND b.COMP_ID = 23 CREATE (a)-[:wrote]->(b)"
+
+
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 8 AND b.COMP_ID = 8 CREATE (a)<-[:written]-(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 9 AND b.COMP_ID = 9 CREATE (a)<-[:written]-(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 10 AND b.COMP_ID = 10 CREATE (a)<-[:written]-(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 11 AND b.COMP_ID = 11 CREATE (a)<-[:written]-(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 12 AND b.COMP_ID = 12 CREATE (a)<-[:written]-(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 13 AND b.COMP_ID = 13 CREATE (a)<-[:written]-(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 14 AND b.COMP_ID = 14 CREATE (a)<-[:written]-(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 15 AND b.COMP_ID = 15 CREATE (a)<-[:written]-(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 16 AND b.COMP_ID = 16 CREATE (a)<-[:written]-(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 17 AND b.COMP_ID = 17 CREATE (a)<-[:written]-(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 18 AND b.COMP_ID = 18 CREATE (a)<-[:written]-(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 19 AND b.COMP_ID = 19 CREATE (a)<-[:written]-(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 20 AND b.COMP_ID = 20 CREATE (a)<-[:written]-(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 21 AND b.COMP_ID = 21 CREATE (a)<-[:written]-(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 22 AND b.COMP_ID = 22 CREATE (a)<-[:written]-(b)"
+Neo4j on conn "MATCH (a:comp),(b:piece) WHERE a.COMP_ID = 23 AND b.COMP_ID = 23 CREATE (a)<-[:written]-(b)"
