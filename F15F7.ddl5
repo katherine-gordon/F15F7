@@ -1,0 +1,307 @@
+-- VIEWS --
+
+DROP VIEW F15F7_RFE_view;
+create view F15F7_RFE_view as
+SELECT
+	rfe_id,
+	explanation,
+	alt_protections,
+	approval_review_date,
+	F15F7_Status_status_id,
+	F15F7_Task_task_id,
+	F15F7_Emp_emp_id
+FROM F15F7_RFE;
+
+-- TRIGGERS --
+
+-- Hardcode initial status
+CREATE OR REPLACE TRIGGER F15F7_RFE_view_trig
+INSTEAD OF INSERT ON F15F7_RFE_view
+FOR EACH ROW
+DECLARE
+     rid NUMBER;
+BEGIN
+     rid := F15F7_RFE_seq.nextval;  
+     
+     INSERT INTO F15F7_RFE 
+     (rfe_id,
+      explanation,
+      alt_protections,
+      approval_review_date,
+      F15F7_Status_status_id,
+      F15F7_Task_task_id,
+      F15F7_Emp_emp_id)
+     VALUES
+	 (rid,
+	  :NEW.explanation,
+	  :NEW.alt_protections,
+	  :NEW.approval_review_date,
+	  100,
+	  :NEW.F15F7_Task_task_id, 
+      :NEW.F15F7_Emp_emp_id
+     );
+END;
+/
+
+-- Insert into Hist on RFE insert
+CREATE OR REPLACE TRIGGER F15F7_Hist_trig
+AFTER INSERT ON F15F7_RFE
+FOR EACH ROW
+DECLARE
+    hid NUMBER;
+    rid NUMBER;
+BEGIN
+    hid := F15F7_HIST_seq.nextval;
+    rid := F15F7_RFE_seq.currval;
+    
+    INSERT INTO F15F7_HIST 
+     (hist_id,
+      F15F7_RFE_rfe_id,
+      F15F7_Status_status_id,
+      effective_date,
+      emp_id
+     )
+     VALUES
+     (
+          hid,
+          rid,
+          100,
+          SYSDATE,
+          v('P0_Emp')
+     );
+END;
+/
+
+-- Insert Approvers on RFE insert --
+DROP TRIGGER F15F7_Approver_trig;
+CREATE OR REPLACE TRIGGER F15F7_Approver_trig
+AFTER INSERT ON F15F7_RFE
+FOR EACH ROW
+DECLARE
+    CURSOR approver_cursor IS
+        SELECT emp_id, sys_admin_flag, lab_direc_flag, F15F7_Lab_lab_id
+        FROM F15F7_Emp;
+    approver_row F15F7_Emp%ROWTYPE;
+    rid NUMBER;
+    aid NUMBER;
+    lid NUMBER;
+    approver NUMBER;
+BEGIN
+    rid := F15F7_RFE_seq.currval;
+    aid := F15F7_Approver_seq.nextval;
+    
+    select F15F7_Lab_lab_id into lid from F15F7_Emp
+    where emp_id = v('P0_Emp');
+    
+    FOR approver_row IN approver_cursor LOOP
+      approver := approver_row.emp_id;
+      
+      -- Sys Admin
+      IF approver_row.F15F7_Lab_lab_id = lid and approver_row.sys_admin_flag = 'Y' THEN
+        INSERT INTO F15F7_Approver (
+        approver_id,
+        F15F7_RFE_rfe_id,
+        F15F7_Emp_emp_id,
+        type)
+            VALUES (
+            aid,
+            rid,
+            approver,
+            'Sys Admin');
+      END IF;
+      
+      -- Lab Dir
+      IF approver_row.F15F7_Lab_lab_id = lid and approver_row.lab_direc_flag = 'Y' THEN
+        INSERT INTO F15F7_Approver (
+        approver_id,
+        F15F7_RFE_rfe_id,
+        F15F7_Emp_emp_id,
+        type)
+            VALUES (
+            aid,
+            rid,
+            approver,
+            'Lab Direc');
+      END IF;
+    END LOOP;
+        
+    -- Requestor
+    approver := v('P0_Emp');
+    
+    INSERT INTO F15F7_Approver (
+    approver_id,
+    F15F7_RFE_rfe_id,
+    F15F7_Emp_emp_id,
+    type)
+        VALUES (
+        aid,
+        rid,
+        approver,
+        'Requestor');
+    
+    -- Chairperson
+    select emp_id into approver from F15F7_Emp
+    where chair_flag = 'Y';
+    
+    INSERT INTO F15F7_Approver (
+    approver_id,
+    F15F7_RFE_rfe_id,
+    F15F7_Emp_emp_id,
+    type)
+        VALUES (
+        aid,
+        rid,
+        approver,
+        'Chair');
+    
+    -- Executive Direc
+    select emp_id into approver from F15F7_Emp
+    where exec_direc_flag = 'Y';
+    
+    INSERT INTO F15F7_Approver (
+    approver_id,
+    F15F7_RFE_rfe_id,
+    F15F7_Emp_emp_id,
+    type)
+        VALUES (
+        aid,
+        rid,
+        approver,
+        'Exec Direc');
+END;
+/
+
+-- Insert Contacts on RFE insert --
+CREATE OR REPLACE TRIGGER F15F7_Contact_trig
+AFTER INSERT ON F15F7_RFE
+FOR EACH ROW
+DECLARE
+    CURSOR contact_cursor IS
+        SELECT emp_id, sys_admin_flag, lab_direc_flag, F15F7_Lab_lab_id
+        FROM F15F7_Emp;
+    contact_row F15F7_Emp%ROWTYPE;
+    rid NUMBER;
+    cid NUMBER;
+    lid NUMBER;
+    contact NUMBER;
+BEGIN
+    rid := F15F7_RFE_seq.currval;
+    cid := F15F7_Contact_seq.nextval;
+    
+    select F15F7_Lab_lab_id into lid from F15F7_Emp
+    where emp_id = v('P0_Emp');
+    
+    FOR contact_row IN contact_cursor LOOP
+      contact := contact_row.emp_id;
+      
+      -- Sys Admin
+      IF contact_row.F15F7_Lab_lab_id = lid and contact_row.sys_admin_flag = 'Y' THEN
+        INSERT INTO F15F7_Contact (
+        contact_id,
+        F15F7_RFE_rfe_id,
+        F15F7_Emp_emp_id,
+        F15F7_Role_code_id)
+              VALUES (
+              cid,
+              rid,
+              contact,
+              102);
+      END IF;
+      
+      -- Lab Dir
+      IF contact_row.F15F7_Lab_lab_id = lid and contact_row.lab_direc_flag = 'Y' THEN
+        INSERT INTO F15F7_Contact (
+        contact_id,
+        F15F7_RFE_rfe_id,
+        F15F7_Emp_emp_id,
+        F15F7_Role_code_id)
+            VALUES (
+            cid,
+            rid,
+            contact,
+            103);
+      END IF;
+    END LOOP;
+        
+    -- Requestor
+    contact := v('P0_Emp');
+    
+    INSERT INTO F15F7_Contact (
+    contact_id,
+    F15F7_RFE_rfe_id,
+    F15F7_Emp_emp_id,
+    F15F7_Role_code_id)
+        VALUES (
+        cid,
+        rid,
+        contact,
+        100);
+    
+    -- Chairperson
+    select emp_id into contact from F15F7_Emp
+    where chair_flag = 'Y';
+    
+    INSERT INTO F15F7_Contact (
+    contact_id,
+    F15F7_RFE_rfe_id,
+    F15F7_Emp_emp_id,
+    F15F7_Role_code_id)
+        VALUES (
+        cid,
+        rid,
+        contact,
+        104);
+    
+    -- Executive Direc
+    select emp_id into contact from F15F7_Emp
+    where exec_direc_flag = 'Y';
+    
+    INSERT INTO F15F7_Contact (
+    contact_id,
+    F15F7_RFE_rfe_id,
+    F15F7_Emp_emp_id,
+    F15F7_Role_code_id)
+        VALUES (
+        cid,
+        rid,
+        contact,
+        105);
+END;
+/
+
+
+
+
+-- Comment Trigger --
+DROP SEQUENCE F15F7_Comment_seq ; 
+create sequence F15F7_Comment_seq 
+start with 100 
+increment by 1 
+nomaxvalue;
+
+CREATE OR REPLACE TRIGGER F15F7_Comment_trig
+BEFORE INSERT ON F15F7_Comment
+FOR EACH ROW
+BEGIN
+    select F15F7_Comment_seq.nextval into :NEW.comment_id from dual; 
+    select SYSDATE into :NEW.entry_date from dual;
+    select v('P12_RFE_ID') into :NEW.F15F7_RFE_rfe_id from dual;
+    select v('P0_Emp') into :NEW.F15F7_Emp_emp_id from dual;
+END; 
+/
+
+-- FYI Reviewer trigger
+DROP TRIGGER FYI_Reviewer_trig;
+/*
+CREATE OR REPLACE TRIGGER FYI_Reviewer_trig
+BEFORE INSERT ON F15F7_Contact
+FOR EACH ROW
+BEGIN
+    :NEW.contact_id := F15F7_Contact_seq.nextval;
+    :NEW.F15F7_RFE_rfe_id := v('P12_RFE_ID');
+    :NEW.F15F7_Role_code_id := 101;
+END;
+/
+*/
+
+
