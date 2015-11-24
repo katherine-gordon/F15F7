@@ -1,0 +1,92 @@
+DELETE FROM F15F7_AUTH;
+DELETE FROM F15F7_ROLE_CODE;
+DELETE FROM F15F7_EMP; 
+DELETE FROM F15F7_STATUS; 
+DELETE FROM F15F7_LAB; 
+DELETE FROM F15F7_TASK; 
+
+-- Insert Auth
+INSERT INTO F15F7_Auth (auth_id, right) VALUES(100, 'write');
+INSERT INTO F15F7_Auth (auth_id, right) VALUES(101, 'read');
+
+-- Insert Status
+INSERT INTO F15F7_Status (status_id, status_code, status_name) 
+    VALUES(100, 1, 'Entered');
+INSERT INTO F15F7_Status (status_id, status_code, status_name)
+    VALUES(100, 2, 'Submitted');
+INSERT INTO F15F7_Status (status_id, status_code, status_name)
+    VALUES(100, 3, 'Returned');
+INSERT INTO F15F7_Status (status_id, status_code, status_name)
+    VALUES(100, 4, 'Recalled');
+INSERT INTO F15F7_Status (status_id, status_code, status_name)
+    VALUES(100, 5, 'Rejected');
+INSERT INTO F15F7_Status (status_id, status_code, status_name)
+    VALUES(100, 6, 'SA Approved');
+INSERT INTO F15F7_Status (status_id, status_code, status_name)
+    VALUES(100, 7, 'LD Approved');
+INSERT INTO F15F7_Status (status_id, status_code, status_name)
+    VALUES(100, 8, 'CH Approved');
+INSERT INTO F15F7_Status (status_id, status_code, status_name)
+    VALUES(100, 9, 'Final Approved');
+
+-- Insert Role Codes
+INSERT INTO F15F7_Role_Code (role_id, role_code, role_name)
+    VALUES(100, 1, 'Requestor');
+INSERT INTO F15F7_Role_Code (role_id, role_code, role_name)
+    VALUES(101, 2, 'FYI Reviewer');
+INSERT INTO F15F7_Role_Code (role_id, role_code, role_name)
+    VALUES(102, 3, 'System Admin Approver');
+INSERT INTO F15F7_Role_Code (role_id, role_code, role_name)
+    VALUES(103, 4, 'Lab Director Approver');    
+INSERT INTO F15F7_Role_Code (role_id, role_code, role_name)
+    VALUES(104, 5, 'Chairperson Approver');    
+INSERT INTO F15F7_Role_Code (role_id, role_code, role_name)
+    VALUES(105, 6, 'Exec. Dir. Approver');    
+
+-- Insert Labs
+INSERT INTO F15F7_Lab (lab_id, name) 
+    VALUES(100, 'A200');
+INSERT INTO F15F7_Lab (lab_id, name) 
+    VALUES(101, 'B200');
+INSERT INTO F15F7_Lab (lab_id, name) 
+    VALUES(102, 'C200');
+
+
+-- Insert Task
+--INSERT INTO F15F7_Task VALUES(task_id, effective_date, abbrev, description);
+INSERT INTO F15F7_Task (task_id, abbrev, description) 
+    VALUES(100, 'abbrev0', 'description0');
+INSERT INTO F15F7_Task (task_id, abbrev, description) 
+    VALUES(100, 'abbrev1', 'description1');
+
+-- Insert Emp
+INSERT INTO F15F7_Emp (emp_id, name, email, office, phone, status, status_eff_date, F15F7_Lab_lab_id, F15F7_Auth_auth_id, sys_admin_flag, lab_direc_flag, exec_direc_flag, chair_flag, type) 
+    VALUES(100, 'Chris', 'cbd@mail.com', 'A200', '000-0000', 'A', SYSDATE, 100, NULL, 'N', 'N', 'Y', 'N', 'Employee');
+INSERT INTO F15F7_Emp (emp_id, name, email, office, phone, status, status_eff_date, F15F7_Lab_lab_id, F15F7_Auth_auth_id, sys_admin_flag, lab_direc_flag, exec_direc_flag, chair_flag, type) 
+    VALUES(100, 'Kason', 'cbd@mail.com', 'A200', '000-0000', 'A', SYSDATE, 100, NULL, 'Y', 'N', 'N', 'N', 'Employee');
+INSERT INTO F15F7_Emp (emp_id, name, email, office, phone, status, status_eff_date, F15F7_Lab_lab_id, F15F7_Auth_auth_id, sys_admin_flag, lab_direc_flag, exec_direc_flag, chair_flag, type) 
+    VALUES(100, 'Virin', 'cbd@mail.com', 'A200', '000-0000', 'A', SYSDATE, 100, NULL, 'N', 'Y', 'N', 'N', 'Employee');
+INSERT INTO F15F7_Emp (emp_id, name, email, office, phone, status, status_eff_date, F15F7_Lab_lab_id, F15F7_Auth_auth_id, sys_admin_flag, lab_direc_flag, exec_direc_flag, chair_flag, type) 
+    VALUES(100, 'Katherine', 'katherine.gordon@utexas.edu', 'A200', '332-1006', 'A', SYSDATE, 100, NULL, 'N', 'N', 'N', 'Y', 'Employee');
+
+INSERT INTO F15F7_Emp (emp_id, name, email, office, phone, status, status_eff_date, F15F7_Lab_lab_id, F15F7_Auth_auth_id, sys_admin_flag, lab_direc_flag, exec_direc_flag, chair_flag, type) 
+    VALUES(100, 'Taylor', 'cbd@mail.com', 'B200', '000-0000', 'A', SYSDATE, 101, NULL, 'N', 'N', 'N', 'N', 'Employee');
+INSERT INTO F15F7_Emp (emp_id, name, email, office, phone, status, status_eff_date, F15F7_Lab_lab_id, F15F7_Auth_auth_id, sys_admin_flag, lab_direc_flag, exec_direc_flag, chair_flag, type) 
+    VALUES(100, 'John', 'cbd@mail.com', 'B200', '000-0000', 'A', SYSDATE, 101, NULL, 'Y', 'N', 'N', 'N', 'Employee');
+INSERT INTO F15F7_Emp (emp_id, name, email, office, phone, status, status_eff_date, F15F7_Lab_lab_id, F15F7_Auth_auth_id, sys_admin_flag, lab_direc_flag, exec_direc_flag, chair_flag, type) 
+    VALUES(100, 'Michael', 'cbd@mail.com', 'B200', '000-0000', 'A', SYSDATE, 101, NULL, 'N', 'Y', 'N', 'N', 'Employee');
+INSERT INTO F15F7_Emp (emp_id, name, email, office, phone, status, status_eff_date, F15F7_Lab_lab_id, F15F7_Auth_auth_id, sys_admin_flag, lab_direc_flag, exec_direc_flag, chair_flag, type) 
+    VALUES(100, 'Christine', 'cn@utexas.edu', 'B200', '332-1006', 'A', SYSDATE, 101, NULL, 'N', 'N', 'N', 'N', 'Employee');
+INSERT INTO F15F7_Emp (emp_id, name, email, office, phone, status, status_eff_date, F15F7_Lab_lab_id, F15F7_Auth_auth_id, sys_admin_flag, lab_direc_flag, exec_direc_flag, chair_flag, type) 
+    VALUES(100, 'Santi', 'cn@utexas.edu', 'B200', '332-1006', 'I', SYSDATE, 101, NULL, 'N', 'N', 'N', 'N', 'Employee');
+INSERT INTO F15F7_Emp (emp_id, name, email, office, phone, status, status_eff_date, F15F7_Lab_lab_id, F15F7_Auth_auth_id, sys_admin_flag, lab_direc_flag, exec_direc_flag, chair_flag, type) 
+    VALUES(100, 'Jonathan', 'cn@utexas.edu', 'B200', '332-1006', 'I', SYSDATE, 101, NULL, 'N', 'N', 'N', 'N', 'Employee');
+
+INSERT INTO F15F7_Emp (emp_id, name, email, office, phone, status, status_eff_date, F15F7_Lab_lab_id, F15F7_Auth_auth_id, sys_admin_flag, lab_direc_flag, exec_direc_flag, chair_flag, type) 
+    VALUES(100, 'Angela', 'cbd@mail.com', 'C200', '000-0000', 'A', SYSDATE, 102, NULL, 'N', 'N', 'N', 'N', 'Employee');
+INSERT INTO F15F7_Emp (emp_id, name, email, office, phone, status, status_eff_date, F15F7_Lab_lab_id, F15F7_Auth_auth_id, sys_admin_flag, lab_direc_flag, exec_direc_flag, chair_flag, type) 
+    VALUES(100, 'Meghana', 'cbd@mail.com', 'C200', '000-0000', 'A', SYSDATE, 102, NULL, 'Y', 'N', 'N', 'N', 'Employee');
+INSERT INTO F15F7_Emp (emp_id, name, email, office, phone, status, status_eff_date, F15F7_Lab_lab_id, F15F7_Auth_auth_id, sys_admin_flag, lab_direc_flag, exec_direc_flag, chair_flag, type) 
+    VALUES(100, 'Billy', 'cbd@mail.com', 'C200', '000-0000', 'A', SYSDATE, 102, NULL, 'N', 'Y', 'N', 'N', 'Employee');
+INSERT INTO F15F7_Emp (emp_id, name, email, office, phone, status, status_eff_date, F15F7_Lab_lab_id, F15F7_Auth_auth_id, sys_admin_flag, lab_direc_flag, exec_direc_flag, chair_flag, type) 
+    VALUES(100, 'Nick', 'on@utexas.edu', 'C200', '332-1006', 'A', SYSDATE, 102, NULL, 'N', 'N', 'N', 'N', 'Employee');
